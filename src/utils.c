@@ -6,11 +6,11 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:48:59 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/07 13:08:33 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/08/08 14:20:06 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/philosophers.h"
+#include "../inc/philo.h"
 
 int	ft_strlen(char *s)
 {
@@ -57,7 +57,7 @@ size_t	get_current_time(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-int	ft_usleep(size_t	milliseconds)
+int	ft_usleep(size_t milliseconds)
 {
 	size_t	start;
 
@@ -65,4 +65,15 @@ int	ft_usleep(size_t	milliseconds)
 	while ((get_current_time() - start) < milliseconds)
 		usleep(500);
 	return (0);
+}
+
+void	state_param(char *s, t_philo *philos)
+{
+	long	cur_time;
+
+	cur_time = get_current_time() - philos->params->start_time;
+	pthread_mutex_lock(&(philos->params->mutex));
+	if (!is_dead(philos))
+		printf("%09ld %d %s\n", cur_time, philos->pos, s);
+	pthread_mutex_unlock(&(philos->params->mutex));
 }
