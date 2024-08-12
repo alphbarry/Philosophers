@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   threads.c                                          :+:      :+:    :+:   */
+/*   death.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/08 10:51:24 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/12 15:13:28 by alphbarr         ###   ########.fr       */
+/*   Created: 2024/08/12 15:02:25 by alphbarr          #+#    #+#             */
+/*   Updated: 2024/08/12 15:04:58 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../inc/philo.h"
 
-void	create_threads(t_philo **philos, t_param *params)
+int	is_dead(t_philo	*philo)
 {
-	int	cur;
+	int	alive;
 
-	param->start_time = get_current_time();
-	cur = 0;
-	
+	pthread_mutex_lock(&(philo->params->m_is_dead));
+	alive = philo->params->is_dead;
+	pthread_mutex_unlock(&(philo->params->m_is_dead));
+	return (alive);
 }

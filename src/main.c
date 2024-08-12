@@ -6,7 +6,7 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 11:43:06 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/08 14:20:28 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/08/12 14:49:29 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,21 @@ int	check_args(char **av)
 	return (0);
 }
 
+void	free_all(t_philo *philos, t_fork *forks, int exit_code)
+{
+	free(philos);
+	free(forks);
+	return (exit_code);
+}
+
 int	main(int ac, char **av)
 {
 	t_param			param;
-	t_philo				*philos;
-	t_fork				*forks;
+	t_philo			*philos;
+	t_fork			*forks;
+	int				return_code;
 
+	return_code = 0;
 	if (ac != 5 || ac != 6)
 		return (write (2, "Wrongs args\n", 12), 1);
 	if (check_args(av) == 1)
@@ -56,5 +65,5 @@ int	main(int ac, char **av)
 		return (1);
 	if (!create_philos(&philos, &params, &forks))
 		return (1);
-
+	if (!create_threads())
 }
