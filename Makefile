@@ -6,7 +6,7 @@
 #    By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/07 11:28:10 by alphbarr          #+#    #+#              #
-#    Updated: 2024/08/07 11:33:52 by alphbarr         ###   ########.fr        #
+#    Updated: 2024/08/15 17:40:29 by alphbarr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,13 @@ SRC_DIR		=	src/
 OBJ_DIR		=	objects/
 
 #<--------------------------------->FILES<---------------------------------->#
-FILES		=	
+FILES		=	main.c \
+				threads.c \
+				death.c \
+				forks.c \
+				inits.c \
+				utils.c
+
 #<--------------------------------->SRCS<----------------------------------->#
 SRCS		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(FILES)))
 

@@ -6,11 +6,11 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 11:38:28 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/08 14:20:21 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/08/15 17:51:08 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef "philo.h"
-# define "philo.h"
+#ifndef PHILO_H
+# define PHILO_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,7 +30,7 @@ typedef struct	s_param
 	pthread_mutex_t	mutex;
 	int				is_dead;
 	pthread_mutex_t	m_is_dead;
-	pthread			death_thread;
+	pthread_t			death_thread;
 }	t_param;
 
 typedef struct s_fork
@@ -62,7 +62,21 @@ int		ft_usleep(size_t milliseconds);
 void	state_param(char *s, t_philo *philos);
 
 //Inits
-int	init_params(t_param *params, int ac, char **av);
-int	create_philos(t_philo **philos, t_param *params, t_fork **forks);
+int		init_params(t_param *params, int ac, char **av);
+int		create_philos(t_philo **philos, t_param *params, t_fork **forks);
+
+//FORKS
+void	releas_fork(char fork_name, t_philo *philo);
+void	release_fork_and_sleep(t_philo *philo);
+void	take_fork(char fork_name, t_philo *philo);
+
+//DEATH
+int		is_dead(t_philo *philo);
+void	*check_philos_death(void *arg);
+
+//THREADS
+int		wait_threads(t_philo **philo, t_param *param);
+int		create_threads(t_philo **philos, t_param *params);
+int		stop_threads(t_philo *philo);
 
 #endif // !"philosophers.h"
