@@ -6,7 +6,7 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:48:59 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/08 14:20:06 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/08/15 18:28:51 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_strlen(char *s)
 {
 	int	i;
 
-	if (s = NULL)
+	if (s == NULL)
 		return (0);
 	i = 0;
 	while (s[i])

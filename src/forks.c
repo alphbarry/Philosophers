@@ -6,7 +6,7 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 14:51:17 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/12 15:12:29 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/08/15 18:24:23 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../inc/philo.h"
@@ -17,7 +17,7 @@ void	release_fork(char fork_name, t_philo *philo)
 	t_fork	*fork;
 
 	taken = &(philo->r_taken);
-	fork = phil->r_fork;
+	fork = philo->r_fork;
 	if (fork_name == 'l')
 	{
 		taken = &(philo->l_taken);
