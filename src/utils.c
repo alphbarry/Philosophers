@@ -6,7 +6,7 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:48:59 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/15 18:28:51 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/08/15 19:43:53 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_atoi(char *s)
 	return (res * sign);
 }
 
-size_t	get_current_time(void)
+long	get_current_time(void)
 {
 	struct	timeval	time;
 
@@ -57,14 +57,13 @@ size_t	get_current_time(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-int	ft_usleep(size_t milliseconds)
+void	ft_usleep(long int milliseconds)
 {
-	size_t	start;
+	long int	start;
 
 	start = get_current_time();
 	while ((get_current_time() - start) < milliseconds)
-		usleep(500);
-	return (0);
+		usleep(100);
 }
 
 void	state_param(char *s, t_philo *philos)

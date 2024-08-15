@@ -6,7 +6,7 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 11:38:28 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/15 17:51:08 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/08/15 19:20:00 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILO_H
@@ -57,8 +57,8 @@ typedef struct s_philo
 //Utils
 int		ft_atoi(char *s);
 int		ft_strlen(char *s);
-size_t	get_current_time(void);
-int		ft_usleep(size_t milliseconds);
+long	get_current_time(void);
+void	ft_usleep(long int milliseconds);
 void	state_param(char *s, t_philo *philos);
 
 //Inits
