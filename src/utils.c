@@ -6,23 +6,11 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:48:59 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/15 19:43:53 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/08/17 20:23:43 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
-
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	if (s == NULL)
-		return (0);
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
 
 int	ft_atoi(char *s)
 {
@@ -48,31 +36,31 @@ int	ft_atoi(char *s)
 	return (res * sign);
 }
 
-long	get_current_time(void)
-{
-	struct	timeval	time;
-
-	if (gettimeofday(&time, NULL) == -1)
-		write (2, "gettimeofday() error\n", 22);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
-}
-
 void	ft_usleep(long int milliseconds)
 {
-	long int	start;
+	long int	start_time;
 
-	start = get_current_time();
-	while ((get_current_time() - start) < milliseconds)
+	start_time = 0;
+	start_time = get_time();
+	while ((get_time() - start_time) < milliseconds)
 		usleep(100);
 }
 
-void	state_param(char *s, t_philo *philos)
+void	state_param(char *s, t_philo *philo)
 {
 	long	cur_time;
 
-	cur_time = get_current_time() - philos->params->start_time;
-	pthread_mutex_lock(&(philos->params->mutex));
-	if (!is_dead(philos))
-		printf("%09ld %d %s\n", cur_time, philos->pos, s);
-	pthread_mutex_unlock(&(philos->params->mutex));
+	cur_time = get_time() - philo->params->start_time;
+	pthread_mutex_lock(&(philo->params->mutex));
+	if (!is_dead(philo))
+		printf("%09ld %d %s\n", cur_time, philo->pos, s);
+	pthread_mutex_unlock(&(philo->params->mutex));
+}
+
+long	get_time(void)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }

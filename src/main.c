@@ -6,41 +6,11 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 11:43:06 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/15 19:09:20 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/08/17 20:12:18 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
-
-int	check_arg_content(char *av)
-{
-	int	i;
-
-	i = 0;
-	while (av[i])
-	{
-		if (av[i] < '0' || av[i] > '9')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	check_args(char **av)
-{
-
-	if (ft_atoi(av[1]) <= 0 || check_arg_content(av[1]) == 1)
-		return (write (2, "Invalid philosophers number\n", 29), 1);
-	if (ft_atoi(av[2]) < 60 || check_arg_content(av[2]) == 1)
-		return (write (2, "Invalid time to die\n", 21), 1);
-	if (ft_atoi(av[3]) < 60 || check_arg_content(av[3]) == 1)
-		return (write (2, "Invalid time to eat\n", 21), 1);
-	if (ft_atoi(av[4]) < 60 || check_arg_content(av[4]) == 1)
-		return (write (2, "Invalid time to sleep\n", 23), 1);
-	if (av[5] && (ft_atoi(av[5]) <= 0 || check_arg_content(av[5]) == 1))
-		return (write (2, "Invalid number of times each philosopher must eat\n", 51), 1);
-	return (0);
-}
 
 int	free_all(t_philo *philos, t_fork *forks, int exit_code)
 {
@@ -49,25 +19,60 @@ int	free_all(t_philo *philos, t_fork *forks, int exit_code)
 	return (exit_code);
 }
 
+int	check_nb(char *av)
+{
+	int	i;
+
+	i = 0;
+	while (av[i])
+	{
+		if (av[i] < '0' && av[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	check_arg(int ac, char **av)
+{
+	int	i;
+
+	i = 1;
+	if (ac != 5 && ac != 6)
+	{
+		printf("Usage : ./philo number_philos time_to_die ");
+		printf("time_to_eat time_to_sleep [number_eat]\n");
+		return (0);
+	}
+	while (i != ac)
+	{
+		if (!check_nb(av[i]))
+		{
+			printf("Syntax Error in av[%d].", i);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
-	t_param			param;
-	t_philo			*philos;
-	t_fork			*forks;
-	int				return_code;
+	t_param	params;
+	t_philo		*philos;
+	t_fork		*forks;
+	int			return_code;
 
 	return_code = 0;
-	if (ac != 5 && ac != 6)
-		return (write (2, "Wrongs args\n", 12), 1);
-	if (check_args(av) == 1)
+	if (!check_arg(ac, av))
 		return (1);
-	if (!init_params(&param, ac, av))
+	if (!init_params(&params, ac, av))
 		return (1);
-	if (!create_philos(&philos, &param, &forks))
+	if (!create_philos(&philos, &params, &forks))
 		return (1);
-	if (!create_threads(&philos, &param))
+	if (!create_threads(&philos, &params))
 		return_code = stop_threads(&philos[0]);
-	if (!wait_threads(&philos, &param))
+	if (!wait_threads(&philos, &params))
 		return (free_all(philos, forks, 1));
 	return (free_all(philos, forks, return_code));
 }

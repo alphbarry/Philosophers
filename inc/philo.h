@@ -6,7 +6,7 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 11:38:28 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/15 19:20:00 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/08/17 20:18:21 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILO_H
@@ -22,9 +22,9 @@
 typedef struct	s_param
 {
 	int				num;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
+	int				time_die;
+	int				time_eat;
+	int				time_sleep;
 	int				max_meal;
 	long			start_time;
 	pthread_mutex_t	mutex;
@@ -56,8 +56,7 @@ typedef struct s_philo
 
 //Utils
 int		ft_atoi(char *s);
-int		ft_strlen(char *s);
-long	get_current_time(void);
+long	get_time(void);
 void	ft_usleep(long int milliseconds);
 void	state_param(char *s, t_philo *philos);
 
@@ -67,7 +66,7 @@ int		create_philos(t_philo **philos, t_param *params, t_fork **forks);
 
 //FORKS
 void	releas_fork(char fork_name, t_philo *philo);
-void	release_fork_and_sleep(t_philo *philo);
+void	release_forks_and_sleep(t_philo *philo);
 void	take_fork(char fork_name, t_philo *philo);
 
 //DEATH

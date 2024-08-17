@@ -6,12 +6,12 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:02:25 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/15 18:23:42 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/08/17 20:19:02 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../inc/philo.h"
 
-int	is_dead(t_philo	*philo)
+int	is_dead(t_philo *philo)
 {
 	int	alive;
 
@@ -30,7 +30,7 @@ int	check_philo_death(t_philo *philo, long cur_time)
 	pthread_mutex_lock(&(philo->m_last_meal));
 	last_meal = cur_time - philo->last_meal;
 	pthread_mutex_unlock(&(philo->m_last_meal));
-	if (last_meal > philo->params->time_to_die)
+	if (last_meal > philo->params->time_die)
 	{
 		pthread_mutex_lock(&(philo->params->mutex));
 		pthread_mutex_lock(&(philo->params->m_is_dead));
@@ -45,7 +45,7 @@ int	check_philo_death(t_philo *philo, long cur_time)
 
 void	*check_philos_death(void *arg)
 {
-	t_param		*params;
+	t_param	*params;
 	t_philo		**philos;
 	long		cur_time;
 	int			cur;
@@ -55,7 +55,7 @@ void	*check_philos_death(void *arg)
 	while (1)
 	{
 		cur = 0;
-		cur_time = get_current_time() - params->start_time;
+		cur_time = get_time() - params->start_time;
 		while (cur < params->num)
 		{
 			if (check_philo_death(&(*philos)[cur], cur_time))
