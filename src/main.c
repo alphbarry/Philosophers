@@ -6,14 +6,15 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 11:43:06 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/17 20:12:18 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/08/18 19:28:03 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int	free_all(t_philo *philos, t_fork *forks, int exit_code)
+int	free_all(t_philo *philos, t_fork *forks, t_param *params, int exit_code)
 {
+	wait_threads(&philos, params);
 	free(philos);
 	free(forks);
 	return (exit_code);
@@ -72,7 +73,5 @@ int	main(int ac, char **av)
 		return (1);
 	if (!create_threads(&philos, &params))
 		return_code = stop_threads(&philos[0]);
-	if (!wait_threads(&philos, &params))
-		return (free_all(philos, forks, 1));
-	return (free_all(philos, forks, return_code));
+	return (free_all(philos, forks, &params, return_code));
 }

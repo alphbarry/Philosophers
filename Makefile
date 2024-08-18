@@ -6,7 +6,7 @@
 #    By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/07 11:28:10 by alphbarr          #+#    #+#              #
-#    Updated: 2024/08/15 17:40:29 by alphbarr         ###   ########.fr        #
+#    Updated: 2024/08/18 19:31:06 by alphbarr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ RM			=	rm -rf
 MKD			=	mkdir -p
 MK			=	Makefile
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
 MKFLAGS		=	--no-print-directory
 
 #<--------------------------------->RULES<----------------------------------->#
