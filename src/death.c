@@ -6,7 +6,7 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:02:25 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/18 19:15:57 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/08/18 19:36:26 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../inc/philo.h"
@@ -45,7 +45,7 @@ int	check_philo_death(t_philo *philo, long cur_time)
 
 void	*check_philos_death(void *arg)
 {
-	t_param	*params;
+	t_param		*params;
 	t_philo		**philos;
 	long		cur_time;
 	int			cur;

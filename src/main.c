@@ -6,7 +6,7 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 11:43:06 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/18 19:28:03 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/08/18 19:34:57 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	check_arg(int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	t_param	params;
+	t_param		params;
 	t_philo		*philos;
 	t_fork		*forks;
 	int			return_code;

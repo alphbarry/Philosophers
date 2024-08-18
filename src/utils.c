@@ -6,7 +6,7 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:48:59 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/17 20:23:43 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/08/18 19:36:02 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	ft_atoi(char *s)
 {
-	int	i;
-	int	sign;
+	int					i;
+	int					sign;
 	unsigned long long	res;
 
 	i = 0;
 	res = 0;
 	sign = 1;
 	while (s[i] == ' ' || s[i] == '\t' || s[i] == '\n'
-			|| s[i] == '\v' || s[i] == '\f' || s[i] == '\r')
+		|| s[i] == '\v' || s[i] == '\f' || s[i] == '\r')
 		i++;
 	if (s[i] == '-')
 		sign = -1;

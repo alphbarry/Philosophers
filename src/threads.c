@@ -6,7 +6,7 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:51:24 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/18 19:21:41 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/08/18 19:36:53 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int	create_threads(t_philo **philos, t_param *params)
 	if (pthread_create(&(params->death_thread), NULL,
 			check_philos_death, philos))
 		return (0);
-	// pthread_detach((*philos)[cur].thread);
 	return (1);
 }
 
