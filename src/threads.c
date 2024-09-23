@@ -6,7 +6,7 @@
 /*   By: alphbarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:51:24 by alphbarr          #+#    #+#             */
-/*   Updated: 2024/08/18 19:36:53 by alphbarr         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:24:28 by alphbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ int	wait_threads(t_philo **philos, t_param *params)
 			return_code = 0;
 		cur++;
 	}
-	pthread_join(params->death_thread, NULL);
 	return (return_code);
 }
 
