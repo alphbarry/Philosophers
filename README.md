@@ -18,18 +18,25 @@ Clone the repository:
 ```bash
 git clone https://github.com/alphbarry/Philosophers.git
 cd Philosophers
+```
 Compile the project:
-
+```bash
 make
+```
+
 🚀 Usage
+```bash
 Run the program with the following syntax:
 ./philo [number_of_philosophers] [time_to_die] [time_to_eat] [time_to_sleep] [number_of_times_each_philosopher_must_eat]
 
 Example:
 ./philo 5 800 200 200 5
 This command simulates 5 philosophers, each having 5 meals, with specified time intervals for eating, sleeping, and dying.
+```
+
 
 🛠️ Technologies Used
+```bash
 C Programming Language
 
 POSIX Threads (pthread)
@@ -37,6 +44,7 @@ POSIX Threads (pthread)
 Mutexes for synchronization
 
 Process Management
+```
 
 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
